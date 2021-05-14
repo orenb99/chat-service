@@ -20,9 +20,8 @@ function SignUp() {
         users
           .doc(emailData)
           .set({ email: emailData, username: userData }, { merge: true })
-          .then((result) => {
+          .then(() => {
             history.push("/");
-            return result;
           })
           .catch((err) => {
             errMessage.current.innerText = err.message;
