@@ -1,15 +1,63 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import firebase from "firebase";
 
 function SignIn() {
+  const history = useHistory();
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const errMessage = useRef();
+  const passwordRef = useRef();
+  const SignUpWithPassword = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(emailInput, passwordInput)
+      .then(() => {
+        history.push("/");
+      })
+      .catch((err) => {
+        errMessage.current.innerText = err.message;
+      });
+  };
   return (
     <div>
       <h1>sign in</h1>
+      <input
+        name="text"
+        placeholder="enter your email"
+        onChange={(e) => {
+          setEmailInput(e.target.value);
+        }}
+      />
       <br />
-      <input name="text" placeholder="enter your email" />
+      <input
+        name="password"
+        type="password"
+        placeholder="enter your password"
+        ref={passwordRef}
+        onChange={(e) => {
+          setPasswordInput(e.target.value);
+        }}
+      />
+      <button
+        name="show-password"
+        onMouseDown={() => {
+          passwordRef.current.type = "text";
+        }}
+        onMouseUp={() => {
+          passwordRef.current.type = "password";
+        }}
+        onMouseOut={() => {
+          passwordRef.current.type = "password";
+        }}
+      >
+        show password
+      </button>
       <br />
-      <input name="password" placeholder="enter your password" />
-      <br />
-      <button name="submit">Register</button>
+      <button name="submit" onClick={SignUpWithPassword}>
+        Enter
+      </button>
+      <h2 className="err-message" ref={errMessage}></h2>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
-import Chat from "./components/Chat";
+import ChatRoom from "./components/ChatRoom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhYQuJpWc6qSQ97xOnN8iRe87A2n2hBT8",
@@ -31,12 +31,14 @@ function App() {
             <SignIn />
           </Route>
           <Route exact path="/sign-up">
-            <SignUp user={user} />
+            <SignUp />
           </Route>
           <Route exact path="/">
             <Profile user={user} />
           </Route>
-          <Route exact path="/Chat" component={Chat} />
+          <Route exact path="/chat">
+            <ChatRoom user={user} />
+          </Route>
         </Switch>
       </div>
     </Router>
