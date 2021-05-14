@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase";
 import Chat from "./Chat";
 function ChatRoom({ user }) {
   const [userEmail, setUserEmail] = useState();
   const [username, setUsername] = useState();
   const [userChats, setUserChats] = useState();
+  const [addInput, setAddInput] = useState();
   const [currentChat, setCurrentChat] = useState();
   const db = firebase.firestore();
   const usersRef = db.collection("Users");
   const chatsRef = db.collection("Chats");
+  const addRef = useRef();
   useEffect(() => {
     if (user) {
       const query = usersRef
@@ -21,7 +23,17 @@ function ChatRoom({ user }) {
         });
     }
   }, [user]);
-
+  const addChat = async () => {
+    const chatToAdd = await chatsRef.doc(addInput).get();
+    if (!chatToAdd.exists || chatToAdd.data().users.includes(userEmail)) return;
+    let chatsList = [...userChats];
+    chatsList.push(addInput);
+    usersRef.doc(userEmail).update({ chats: chatsList });
+    setUserChats(chatsList);
+    setAddInput("");
+    addRef.current.value = "";
+    addRef.current.focus();
+  };
   const createChat = () => {
     let chatId = "chatroom" + new Date().getTime();
     chatsRef
@@ -51,14 +63,19 @@ function ChatRoom({ user }) {
       <h2>Chat Rooms</h2>
       <button onClick={createChat}>Create new chat room</button>
       <br />
-      <input name="chat-id-input" placeholder="enter chat id" />
-      <button>add chat</button>
+      <input
+        name="chat-id-input"
+        placeholder="enter chat id"
+        onChange={(e) => setAddInput(e.target.value)}
+        ref={addRef}
+      />
+      <button onClick={addChat}>add chat</button>
 
       <div className="chat-rooms">
         {userChats ? (
-          userChats.map((value) => (
+          userChats.map((value, index) => (
             <h3
-              key={value}
+              key={index}
               onClick={() => {
                 setCurrentChat(value);
               }}

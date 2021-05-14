@@ -50,7 +50,7 @@ function Chat({ user, chatId, username }) {
         {messages &&
           messages.map((value, index) => (
             <Message
-              username={username}
+              username={value.username}
               time={value.createdAt}
               content={value.content}
               key={index}
