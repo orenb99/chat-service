@@ -3,7 +3,9 @@ import firebase from "firebase";
 import Chat from "./Chat";
 function ChatRoom({ user }) {
   const [userEmail, setUserEmail] = useState();
+  const [username, setUsername] = useState();
   const [userChats, setUserChats] = useState();
+  const [currentChat, setCurrentChat] = useState();
   const db = firebase.firestore();
   const usersRef = db.collection("Users");
   const chatsRef = db.collection("Chats");
@@ -14,6 +16,7 @@ function ChatRoom({ user }) {
         .get()
         .then((result) => {
           setUserEmail(result.docs[0].data().email);
+          setUsername(result.docs[0].data().username);
           setUserChats(result.docs[0].data().chats);
         });
     }
@@ -53,12 +56,21 @@ function ChatRoom({ user }) {
 
       <div className="chat-rooms">
         {userChats ? (
-          userChats.map((value) => <h3 key={value}>{value}</h3>)
+          userChats.map((value) => (
+            <h3
+              key={value}
+              onClick={() => {
+                setCurrentChat(value);
+              }}
+            >
+              {value}
+            </h3>
+          ))
         ) : (
           <h3>Loading...</h3>
         )}
       </div>
-      <Chat />
+      <Chat user={user} username={username} chatId={currentChat} />
     </div>
   );
 }
