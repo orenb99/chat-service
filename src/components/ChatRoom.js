@@ -26,7 +26,7 @@ function ChatRoom({ user }) {
     let chatId = "chatroom" + new Date().getTime();
     chatsRef
       .doc(chatId)
-      .set({ users: [userEmail], messages: [] })
+      .set({ users: [userEmail] })
       .then(() => {
         if (userChats === undefined) {
           usersRef

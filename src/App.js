@@ -22,7 +22,7 @@ const auth = firebase.auth();
 
 function App() {
   const [user] = useAuthState(auth);
-  console.log(user);
+  //console.log(user);
   return (
     <Router>
       <div className="App">

@@ -1,28 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase";
 import Message from "./Message";
 function Chat({ user, chatId, username }) {
   const db = firebase.firestore();
   const chatsRef = db.collection("Chats");
   const [textInput, setTextInput] = useState("");
-  const sendMessage = async (e) => {
+  const inputRef = useRef();
+  const [messages, setMessages] = useState([]);
+  async function getMessages() {
+    const snapshot = await chatsRef
+      .doc(chatId)
+      .collection("messages")
+      .orderBy("createdAt", "desc")
+      .limit(25)
+      .get();
+    if (!snapshot) return;
+    let dataToPass = [];
+    snapshot.forEach((doc) => dataToPass.unshift(doc.data()));
+    setMessages(dataToPass);
+  }
+  useEffect(() => {
+    getMessages();
+  }, [chatId]);
+  const sendMessage = (e) => {
     e.preventDefault();
     if (!textInput) return;
-    await chatsRef.add({
+    const message = {
       content: textInput,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      createdAt: new Date().toLocaleTimeString("it-IT"),
       username: username,
-    });
+    };
+    let dataToPass = [...messages];
+    dataToPass.push(message);
+    chatsRef
+      .doc(chatId)
+      .collection("messages")
+      .add(message)
+      .then(() => {
+        console.log("send");
+        getMessages();
+        inputRef.current.value = "";
+        setTextInput("");
+        inputRef.current.focus();
+      });
   };
   return chatId && user ? (
     <div className="chat">
-      <div className="messages"></div>
+      <div className="messages">
+        {messages &&
+          messages.map((value, index) => (
+            <Message
+              username={username}
+              time={value.createdAt}
+              content={value.content}
+              key={index}
+            />
+          ))}
+      </div>
       <div className="texting">
         <input
           name="text"
           onChange={(e) => {
-            setTextInput(e.target.innerText);
+            setTextInput(e.target.value);
           }}
+          ref={inputRef}
         />
         <button onClick={sendMessage}>Send</button>
       </div>
