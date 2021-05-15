@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase";
 import Message from "./Message";
-function Chat({ user, chatId, username }) {
+function Chat({ user, chatId }) {
   const db = firebase.firestore();
   const chatsRef = db.collection("Chats");
   const [textInput, setTextInput] = useState("");
@@ -28,7 +28,8 @@ function Chat({ user, chatId, username }) {
     const message = {
       content: textInput,
       createdAt: new Date().toLocaleTimeString("it-IT"),
-      username: username,
+      username: user.displayName,
+      image: user.photoURL,
     };
     let dataToPass = [...messages];
     dataToPass.push(message);
@@ -50,9 +51,11 @@ function Chat({ user, chatId, username }) {
         {messages &&
           messages.map((value, index) => (
             <Message
+              current={user}
               username={value.username}
               time={value.createdAt}
               content={value.content}
+              image={value.image}
               key={index}
             />
           ))}

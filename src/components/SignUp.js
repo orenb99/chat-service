@@ -19,7 +19,7 @@ function SignUp() {
         const users = await db.collection("Users");
         users
           .doc(emailData)
-          .set({ email: emailData, username: userData }, { merge: true })
+          .set({ email: emailData }, { merge: true })
           .then(() => {
             history.push("/");
           })
@@ -44,10 +44,7 @@ function SignUp() {
             const users = await db.collection("Users");
             users
               .doc(user.user.email)
-              .set(
-                { email: user.user.email, username: "user", chats: [] },
-                { merge: true }
-              );
+              .set({ email: user.user.email, chats: [] });
             history.push("/");
           })
           .catch((err) => {

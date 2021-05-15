@@ -3,6 +3,14 @@
 }
 
 .image-icon {
-  width: 100px;
+  width: 40px;
+}
+
+.sent {
+  color: red;
+}
+
+.received {
+  color: green;
 }
 /*# sourceMappingURL=app.css.map */

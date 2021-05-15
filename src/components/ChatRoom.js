@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase";
+import {useCollectionData} from "react-firebase-hooks/firestore"
 import Chat from "./Chat";
 function ChatRoom({ user }) {
-  const [userEmail, setUserEmail] = useState();
-  const [username, setUsername] = useState();
   const [userChats, setUserChats] = useState();
   const [addInput, setAddInput] = useState();
   const [currentChat, setCurrentChat] = useState();
@@ -17,18 +16,17 @@ function ChatRoom({ user }) {
         .where("email", "==", user.email)
         .get()
         .then((result) => {
-          setUserEmail(result.docs[0].data().email);
-          setUsername(result.docs[0].data().username);
           setUserChats(result.docs[0].data().chats);
         });
     }
   }, [user]);
   const addChat = async () => {
     const chatToAdd = await chatsRef.doc(addInput).get();
-    if (!chatToAdd.exists || chatToAdd.data().users.includes(userEmail)) return;
+    if (!chatToAdd.exists || chatToAdd.data().users.includes(user.email))
+      return;
     let chatsList = [...userChats];
     chatsList.push(addInput);
-    usersRef.doc(userEmail).update({ chats: chatsList });
+    usersRef.doc(user.email).update({ chats: chatsList });
     setUserChats(chatsList);
     setAddInput("");
     addRef.current.value = "";
@@ -38,11 +36,11 @@ function ChatRoom({ user }) {
     let chatId = "chatroom" + new Date().getTime();
     chatsRef
       .doc(chatId)
-      .set({ users: [userEmail] })
+      .set({ users: [user.email] })
       .then(() => {
         if (userChats === undefined) {
           usersRef
-            .doc(userEmail)
+            .doc(user.email)
             .update({ chats: [chatId] })
             .then(() => setUserChats([chatId]))
             .catch((err) => console.log(err));
@@ -50,7 +48,7 @@ function ChatRoom({ user }) {
           let arrayToTransfer = [...userChats];
           arrayToTransfer.push(chatId);
           usersRef
-            .doc(userEmail)
+            .doc(user.email)
             .update({ chats: arrayToTransfer })
             .then(() => setUserChats(arrayToTransfer))
             .catch((err) => console.log(err));
@@ -87,7 +85,7 @@ function ChatRoom({ user }) {
           <h3>Loading...</h3>
         )}
       </div>
-      <Chat user={user} username={username} chatId={currentChat} />
+      <Chat user={user} chatId={currentChat} />
     </div>
   );
 }
