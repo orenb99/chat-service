@@ -1,33 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase";
-import {useCollectionData} from "react-firebase-hooks/firestore"
+import { useCollectionData } from "react-firebase-hooks/firestore";
 import Chat from "./Chat";
 function ChatRoom({ user }) {
-  const [userChats, setUserChats] = useState();
   const [addInput, setAddInput] = useState();
   const [currentChat, setCurrentChat] = useState();
   const db = firebase.firestore();
   const usersRef = db.collection("Users");
   const chatsRef = db.collection("Chats");
+  const [userInfo, loadingInfo] = useCollectionData(
+    usersRef.where("email", "==", user.email)
+  );
   const addRef = useRef();
   useEffect(() => {
     if (user) {
-      const query = usersRef
-        .where("email", "==", user.email)
-        .get()
-        .then((result) => {
-          setUserChats(result.docs[0].data().chats);
-        });
+      const query = usersRef.where("email", "==", user.email).get();
     }
   }, [user]);
   const addChat = async () => {
     const chatToAdd = await chatsRef.doc(addInput).get();
     if (!chatToAdd.exists || chatToAdd.data().users.includes(user.email))
       return;
-    let chatsList = [...userChats];
+    let chatsList = [...userInfo[0].chats];
     chatsList.push(addInput);
     usersRef.doc(user.email).update({ chats: chatsList });
-    setUserChats(chatsList);
     setAddInput("");
     addRef.current.value = "";
     addRef.current.focus();
@@ -38,19 +34,17 @@ function ChatRoom({ user }) {
       .doc(chatId)
       .set({ users: [user.email] })
       .then(() => {
-        if (userChats === undefined) {
+        if (userInfo[0].chats === undefined) {
           usersRef
             .doc(user.email)
             .update({ chats: [chatId] })
-            .then(() => setUserChats([chatId]))
             .catch((err) => console.log(err));
         } else {
-          let arrayToTransfer = [...userChats];
+          let arrayToTransfer = [...userInfo[0].chats];
           arrayToTransfer.push(chatId);
           usersRef
             .doc(user.email)
             .update({ chats: arrayToTransfer })
-            .then(() => setUserChats(arrayToTransfer))
             .catch((err) => console.log(err));
         }
       })
@@ -70,8 +64,8 @@ function ChatRoom({ user }) {
       <button onClick={addChat}>add chat</button>
 
       <div className="chat-rooms">
-        {userChats ? (
-          userChats.map((value, index) => (
+        {!loadingInfo ? (
+          userInfo[0].chats.map((value, index) => (
             <h3
               key={index}
               onClick={() => {

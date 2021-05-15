@@ -37,9 +37,11 @@ function App() {
           <Route exact path="/">
             <Profile user={user} />
           </Route>
-          <Route exact path="/chat">
-            <ChatRoom user={user} />
-          </Route>
+          {user && (
+            <Route exact path="/chat">
+              <ChatRoom user={user} />
+            </Route>
+          )}
         </Switch>
       </div>
     </Router>

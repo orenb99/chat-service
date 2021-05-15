@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 import Message from "./Message";
 function Chat({ user, chatId }) {
   const db = firebase.firestore();
