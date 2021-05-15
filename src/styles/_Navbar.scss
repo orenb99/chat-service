@@ -1,6 +1,8 @@
+$NavColor: rgb(73, 184, 221);
+$borderColor: rgb(9, 146, 192);
 .nav-bar {
   display: inline-flex;
-  background-color: rgb(73, 184, 221);
+  background-color: $NavColor;
   justify-content: space-around;
   height: 7vh;
   width: 100vw;

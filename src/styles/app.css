@@ -13,7 +13,7 @@
   color: green;
 }
 
-.profile-img {
+.profile > .profile-img {
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -54,64 +54,12 @@
   text-align: center;
 }
 
-.sign-up > input,
-.sign-in > input {
-  width: 250px;
-  height: 30px;
-  padding: 5px;
-  margin: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  border: solid 2px #0992c0;
-  border-radius: 10px;
-  background-color: #49b8dd;
-}
-
-.sign-up > input::-webkit-input-placeholder,
-.sign-in > input::-webkit-input-placeholder {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  opacity: 80%;
-}
-
-.sign-up > input:-ms-input-placeholder,
-.sign-in > input:-ms-input-placeholder {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  opacity: 80%;
-}
-
-.sign-up > input::-ms-input-placeholder,
-.sign-in > input::-ms-input-placeholder {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  opacity: 80%;
-}
-
-.sign-up > input::placeholder,
-.sign-in > input::placeholder {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  opacity: 80%;
-}
-
 .sign-up > .show-password,
 .sign-in > .show-password {
   width: 40px;
   height: 40px;
   font-size: 20px;
   font-weight: normal;
-}
-
-.sign-up > .headline,
-.sign-in > .headline {
-  color: #49b8dd;
-  font-size: 70px;
 }
 
 .sign-up > .google,
@@ -157,6 +105,52 @@ button {
 
 button:hover {
   cursor: pointer;
-  border: solid 2px;
+  border: solid 2px white;
+}
+
+.headline {
+  color: #49b8dd;
+  font-size: 70px;
+}
+
+input {
+  width: 250px;
+  height: 30px;
+  padding: 5px;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border: solid 2px #0992c0;
+  border-radius: 10px;
+  background-color: #49b8dd;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  opacity: 80%;
+}
+
+input:-ms-input-placeholder {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  opacity: 80%;
+}
+
+input::-ms-input-placeholder {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  opacity: 80%;
+}
+
+input::placeholder {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  opacity: 80%;
 }
 /*# sourceMappingURL=app.css.map */

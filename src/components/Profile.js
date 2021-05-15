@@ -42,8 +42,8 @@ function Profile({ user }) {
       });
   };
   return (
-    <div>
-      <h1>Profile</h1>
+    <div className="profile">
+      <h1 className="headline">Profile</h1>
       {user && <img src={imageUrl} className="profile-img" />}
       <br />
       <input
@@ -69,7 +69,6 @@ function Profile({ user }) {
       <button ref={editButton} onClick={editUsername}>
         edit
       </button>
-      <h1>{user ? `Hello ${user.displayName}` : "loading..."}</h1>
       <button
         name="Logout"
         onClick={() => {

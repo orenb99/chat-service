@@ -4,33 +4,12 @@ $borderColor: rgb(9, 146, 192);
 .sign-in {
   margin: auto;
   text-align: center;
-  & > input {
-    &::placeholder {
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-      opacity: 80%;
-    }
-    width: 250px;
-    height: 30px;
-    padding: 5px;
-    margin: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    border: solid 2px $borderColor;
-    border-radius: 10px;
-    background-color: $NavColor;
-  }
+  
   & > .show-password {
     width: 40px;
     height: 40px;
     font-size: 20px;
     font-weight: normal;
-  }
-  & > .headline {
-    color: $NavColor;
-    font-size: 70px;
   }
 
   & > .google {
