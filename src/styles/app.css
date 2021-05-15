@@ -1,9 +1,8 @@
-.profile-img {
-  width: 300px;
-}
-
 .image-icon {
   width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .sent {
@@ -12,5 +11,100 @@
 
 .received {
   color: green;
+}
+
+.profile-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.nav-bar {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-color: #49b8dd;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 7vh;
+  width: 100vw;
+}
+
+.nav-link {
+  color: whitesmoke;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  color: #232323;
+}
+
+.nav-link.inactive {
+  color: whitesmoke;
+}
+
+.nav-link:hover {
+  color: #232323;
+}
+
+.sign-up {
+  text-align: center;
+}
+
+.sign-up > input {
+  width: 200px;
+  height: 20px;
+}
+
+.sign-up > .headline {
+  color: #49b8dd;
+  font-size: 70px;
+}
+
+.sign-up > button {
+  font-size: 20px;
+  background-color: #49b8dd;
+  color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+}
+
+.sign-up > button .show-password {
+  color: black;
+  font-size: 500px;
+}
+
+.sign-up > .google {
+  margin: 30px;
+  background-color: #49b8dd;
+  border: solid 0.5px black;
+  padding: 5px;
+  font-size: 35px;
+  font-weight: bolder;
+  border-radius: 5px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.sign-up > .google > img {
+  position: relative;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+body {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#cef7f3), to(#d2eff8));
+  background-image: linear-gradient(180deg, #cef7f3, #d2eff8);
+  background-size: 100vw 100vh;
+}
+
+button:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=app.css.map */

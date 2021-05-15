@@ -1,0 +1,43 @@
+.sign-up {
+  text-align: center;
+  & > input {
+    width: 200px;
+    height: 20px;
+  }
+  & > .headline {
+    color: rgb(73, 184, 221);
+    font-size: 70px;
+  }
+  & > button {
+    font-size: 20px;
+    background-color: rgb(73, 184, 221);
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    & .show-password {
+      color: black;
+      font-size: 500px;
+    }
+  }
+  & > .google {
+    margin: 30px;
+    background-color: rgb(73, 184, 221);
+    border: solid 0.5px black;
+    padding: 5px;
+    font-size: 35px;
+    font-weight: bolder;
+    border-radius: 5px;
+    color: white;
+    text-transform: capitalize;
+    & > img {
+      position: relative;
+      top: 5px;
+      width: 40px;
+      height: 40px;
+      background-color: whitesmoke;
+      border-radius: 10px;
+      padding: 5px;
+      margin-right: 20px;
+    }
+  }
+}

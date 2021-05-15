@@ -1,0 +1,21 @@
+.nav-bar {
+  display: inline-flex;
+  background-color: rgb(73, 184, 221);
+  justify-content: space-around;
+  height: 7vh;
+  width: 100vw;
+}
+.nav-link {
+  color: whitesmoke;
+  font-size: 30px;
+  font-weight: bold;
+  &.active {
+    color: rgb(35, 35, 35);
+  }
+  &.inactive {
+    color: whitesmoke;
+  }
+  &:hover {
+    color: rgb(35, 35, 35);
+  }
+}

@@ -54,9 +54,10 @@ function SignUp() {
       .catch((err) => (errMessage.current.innerText = err.message));
   };
   return (
-    <div>
-      <h1>sign up</h1>
-      <button name="google" onClick={SignUpWithGoogle}>
+    <div className="sign-up">
+      <h1 className="headline">Sign Up</h1>
+      <button name="google" onClick={SignUpWithGoogle} className="google">
+        <img src="https://firebasestorage.googleapis.com/v0/b/chat-service-d13a1.appspot.com/o/google-logo.png?alt=media&token=47d2d019-037d-418c-abef-230317fe1393" />
         Sign up with google
       </button>
       <br />
@@ -79,6 +80,7 @@ function SignUp() {
       />
       <button
         name="show-password"
+        className="show-password"
         onMouseDown={() => {
           passwordRef.current.type = "text";
         }}
@@ -89,7 +91,7 @@ function SignUp() {
           passwordRef.current.type = "password";
         }}
       >
-        show password
+        👁
       </button>
       <br />
       <button name="submit" onClick={SignUpWithPassword}>
