@@ -10,12 +10,12 @@
   font-size: 30px;
   font-weight: bold;
   &.active {
-    color: rgb(35, 35, 35);
+    color: rgb(186, 253, 250);
   }
   &.inactive {
     color: whitesmoke;
   }
   &:hover {
-    color: rgb(35, 35, 35);
+    color: rgb(186, 253, 250);
   }
 }

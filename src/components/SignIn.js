@@ -20,8 +20,8 @@ function SignIn() {
       });
   };
   return (
-    <div>
-      <h1>sign in</h1>
+    <div className="sign-in">
+      <h1 className="headline">Sign In</h1>
       <input
         name="text"
         placeholder="enter your email"
@@ -41,6 +41,7 @@ function SignIn() {
       />
       <button
         name="show-password"
+        className="show-password"
         onMouseDown={() => {
           passwordRef.current.type = "text";
         }}
@@ -51,7 +52,7 @@ function SignIn() {
           passwordRef.current.type = "password";
         }}
       >
-        show password
+        👁
       </button>
       <br />
       <button name="submit" onClick={SignUpWithPassword}>

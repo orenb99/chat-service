@@ -37,7 +37,7 @@
 }
 
 .nav-link.active {
-  color: #232323;
+  color: #bafdfa;
 }
 
 .nav-link.inactive {
@@ -45,40 +45,80 @@
 }
 
 .nav-link:hover {
-  color: #232323;
+  color: #bafdfa;
 }
 
-.sign-up {
+.sign-up,
+.sign-in {
+  margin: auto;
   text-align: center;
 }
 
-.sign-up > input {
-  width: 200px;
-  height: 20px;
+.sign-up > input,
+.sign-in > input {
+  width: 250px;
+  height: 30px;
+  padding: 5px;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border: solid 2px #0992c0;
+  border-radius: 10px;
+  background-color: #49b8dd;
 }
 
-.sign-up > .headline {
+.sign-up > input::-webkit-input-placeholder,
+.sign-in > input::-webkit-input-placeholder {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  opacity: 80%;
+}
+
+.sign-up > input:-ms-input-placeholder,
+.sign-in > input:-ms-input-placeholder {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  opacity: 80%;
+}
+
+.sign-up > input::-ms-input-placeholder,
+.sign-in > input::-ms-input-placeholder {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  opacity: 80%;
+}
+
+.sign-up > input::placeholder,
+.sign-in > input::placeholder {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  opacity: 80%;
+}
+
+.sign-up > .show-password,
+.sign-in > .show-password {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.sign-up > .headline,
+.sign-in > .headline {
   color: #49b8dd;
   font-size: 70px;
 }
 
-.sign-up > button {
-  font-size: 20px;
-  background-color: #49b8dd;
-  color: whitesmoke;
-  border: none;
-  border-radius: 5px;
-}
-
-.sign-up > button .show-password {
-  color: black;
-  font-size: 500px;
-}
-
-.sign-up > .google {
+.sign-up > .google,
+.sign-in > .google {
   margin: 30px;
-  background-color: #49b8dd;
-  border: solid 0.5px black;
+  background-color: #0992c0;
+  border: solid 2px #0992c0;
   padding: 5px;
   font-size: 35px;
   font-weight: bolder;
@@ -87,7 +127,8 @@
   text-transform: capitalize;
 }
 
-.sign-up > .google > img {
+.sign-up > .google > img,
+.sign-in > .google > img {
   position: relative;
   top: 5px;
   width: 40px;
@@ -104,7 +145,18 @@ body {
   background-size: 100vw 100vh;
 }
 
+button {
+  font-size: 25px;
+  font-weight: bolder;
+  background-color: #49b8dd;
+  color: whitesmoke;
+  border: solid #0992c0 2px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 button:hover {
   cursor: pointer;
+  border: solid 2px;
 }
 /*# sourceMappingURL=app.css.map */

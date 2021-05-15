@@ -61,39 +61,39 @@ function SignUp() {
         Sign up with google
       </button>
       <br />
-      <input
-        name="text"
-        placeholder="enter your email"
-        onChange={(e) => {
-          setEmailInput(e.target.value);
-        }}
-      />
-      <br />
-      <input
-        name="password"
-        type="password"
-        placeholder="enter your password"
-        ref={passwordRef}
-        onChange={(e) => {
-          setPasswordInput(e.target.value);
-        }}
-      />
-      <button
-        name="show-password"
-        className="show-password"
-        onMouseDown={() => {
-          passwordRef.current.type = "text";
-        }}
-        onMouseUp={() => {
-          passwordRef.current.type = "password";
-        }}
-        onMouseOut={() => {
-          passwordRef.current.type = "password";
-        }}
-      >
-        👁
-      </button>
-      <br />
+        <input
+          name="text"
+          placeholder="enter your email"
+          onChange={(e) => {
+            setEmailInput(e.target.value);
+          }}
+        />
+        <br />
+        <input
+          name="password"
+          type="password"
+          placeholder="enter your password"
+          ref={passwordRef}
+          onChange={(e) => {
+            setPasswordInput(e.target.value);
+          }}
+        />
+        <button
+          name="show-password"
+          className="show-password"
+          onMouseDown={() => {
+            passwordRef.current.type = "text";
+          }}
+          onMouseUp={() => {
+            passwordRef.current.type = "password";
+          }}
+          onMouseOut={() => {
+            passwordRef.current.type = "password";
+          }}
+        >
+          👁
+        </button>
+        <br />
       <button name="submit" onClick={SignUpWithPassword}>
         Register
       </button>
