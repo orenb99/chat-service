@@ -36,7 +36,7 @@ function SignUp() {
         const currentUser = firebase.auth().currentUser;
         currentUser
           .updateProfile({
-            displayName: "user",
+            displayName: "user" + currentUser.uid,
             photoURL:
               "https://firebasestorage.googleapis.com/v0/b/chat-service-d13a1.appspot.com/o/user-icon.png?alt=media&token=d7d79030-4cde-4d4a-b4bb-73684808bd66",
           })
