@@ -32,7 +32,7 @@ function ChatRoom({ user }) {
     let chatId = "chatroom" + new Date().getTime();
     chatsRef
       .doc(chatId)
-      .set({ users: [user.email] })
+      .set({ chatId, users: [user.email] })
       .then(() => {
         if (userInfo[0].chats === undefined) {
           usersRef
@@ -79,7 +79,7 @@ function ChatRoom({ user }) {
           <h3>Loading...</h3>
         )}
       </div>
-      <Chat user={user} chatId={currentChat} />
+      {currentChat && <Chat user={user} chatId={currentChat} />}
     </div>
   );
 }

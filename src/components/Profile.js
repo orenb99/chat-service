@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import firebase from "firebase";
 import { useHistory } from "react-router-dom";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 function Profile({ user }) {
   const history = useHistory();
   const db = firebase.firestore();
@@ -13,7 +12,7 @@ function Profile({ user }) {
       <h1>Profile</h1>
       {user && <img src={user.photoURL} className="profile-img" />}
       <br />
-      <label for="username">your username</label>
+      <label htmlFor="username">your username</label>
       <input name="username" />
       <h1>{user ? `Hello ${user.displayName}` : "loading..."}</h1>
       <button

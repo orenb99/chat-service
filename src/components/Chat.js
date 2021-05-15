@@ -5,24 +5,12 @@ import Message from "./Message";
 function Chat({ user, chatId }) {
   const db = firebase.firestore();
   const chatsRef = db.collection("Chats");
+  const messagesRef = chatsRef.doc(chatId).collection("messages");
   const [textInput, setTextInput] = useState("");
   const inputRef = useRef();
-  const [messages, setMessages] = useState([]);
-  async function getMessages() {
-    const snapshot = await chatsRef
-      .doc(chatId)
-      .collection("messages")
-      .orderBy("createdAt", "desc")
-      .limit(25)
-      .get();
-    if (!snapshot) return;
-    let dataToPass = [];
-    snapshot.forEach((doc) => dataToPass.unshift(doc.data()));
-    setMessages(dataToPass);
-  }
-  useEffect(() => {
-    getMessages();
-  }, [chatId]);
+  const [messages, loadingMessages] = useCollectionData(
+    messagesRef.limit(14).orderBy("createdAt", "desc")
+  );
   const sendMessage = (e) => {
     e.preventDefault();
     if (!textInput) return;
@@ -32,15 +20,12 @@ function Chat({ user, chatId }) {
       username: user.displayName,
       image: user.photoURL,
     };
-    let dataToPass = [...messages];
-    dataToPass.push(message);
     chatsRef
       .doc(chatId)
       .collection("messages")
       .add(message)
       .then(() => {
         console.log("send");
-        getMessages();
         inputRef.current.value = "";
         setTextInput("");
         inputRef.current.focus();
@@ -49,14 +34,14 @@ function Chat({ user, chatId }) {
   return chatId && user ? (
     <div className="chat">
       <div className="messages">
-        {messages &&
-          messages.map((value, index) => (
+        {!loadingMessages &&
+          messages.map((value, index, array) => (
             <Message
               current={user}
-              username={value.username}
-              time={value.createdAt}
-              content={value.content}
-              image={value.image}
+              username={array[array.length - index - 1].username}
+              time={array[array.length - index - 1].createdAt}
+              content={array[array.length - index - 1].content}
+              image={array[array.length - index - 1].image}
               key={index}
             />
           ))}
