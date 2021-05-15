@@ -32,19 +32,29 @@ function SignUp() {
     const provider = firebase
       .auth()
       .createUserWithEmailAndPassword(emailInput, passwordInput)
-      .then(async (user) => {
-        const users = await db.collection("Users");
-        users
-          .doc(user.user.email)
-          .set(
-            { email: user.user.email, username: "user", chats: [] },
-            { merge: true }
-          );
-        history.push("/");
+      .then((user) => {
+        const currentUser = firebase.auth().currentUser;
+        currentUser
+          .updateProfile({
+            displayName: "user",
+            photoURL:
+              "https://firebasestorage.googleapis.com/v0/b/chat-service-d13a1.appspot.com/o/user-icon.png?alt=media&token=d7d79030-4cde-4d4a-b4bb-73684808bd66",
+          })
+          .then(async () => {
+            const users = await db.collection("Users");
+            users
+              .doc(user.user.email)
+              .set(
+                { email: user.user.email, username: "user", chats: [] },
+                { merge: true }
+              );
+            history.push("/");
+          })
+          .catch((err) => {
+            errMessage.current.innerText = err.message;
+          });
       })
-      .catch((err) => {
-        errMessage.current.innerText = err.message;
-      });
+      .catch((err) => (errMessage.current.innerText = err.message));
   };
   return (
     <div>

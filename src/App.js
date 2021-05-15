@@ -7,7 +7,7 @@ import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import ChatRoom from "./components/ChatRoom";
-
+import "./styles/app.css";
 const firebaseConfig = {
   apiKey: "AIzaSyDhYQuJpWc6qSQ97xOnN8iRe87A2n2hBT8",
   authDomain: "chat-service-d13a1.firebaseapp.com",
@@ -22,7 +22,7 @@ const auth = firebase.auth();
 
 function App() {
   const [user] = useAuthState(auth);
-  //console.log(user);
+  console.log(user);
   return (
     <Router>
       <div className="App">

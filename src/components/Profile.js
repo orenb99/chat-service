@@ -7,6 +7,7 @@ function Profile({ user }) {
   const history = useHistory();
   const db = firebase.firestore();
   const usersRef = db.collection("Users");
+  const storage = firebase.storage();
   useEffect(() => {
     if (user) {
       const query = usersRef
@@ -21,6 +22,8 @@ function Profile({ user }) {
   return (
     <div>
       <h1>Profile</h1>
+      {userData && <img src={user.photoURL} className="profile-img" />}
+      <br />
       <label for="username">your username</label>
       <input name="username" />
       <h1>{userData ? `Hello ${userData.username}` : "loading..."}</h1>
