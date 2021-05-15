@@ -3,7 +3,7 @@ import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import Chat from "./Chat";
 function ChatRoom({ user }) {
-  const [addInput, setAddInput] = useState();
+  // const [addInput, setAddInput] = useState();
   const [currentChat, setCurrentChat] = useState();
   const db = firebase.firestore();
   const usersRef = db.collection("Users");
@@ -11,23 +11,23 @@ function ChatRoom({ user }) {
   const [userInfo, loadingInfo] = useCollectionData(
     usersRef.where("email", "==", user.email)
   );
-  const addRef = useRef();
+  // const addRef = useRef();
   useEffect(() => {
     if (user) {
       const query = usersRef.where("email", "==", user.email).get();
     }
   }, [user]);
-  const addChat = async () => {
-    const chatToAdd = await chatsRef.doc(addInput).get();
-    if (!chatToAdd.exists || chatToAdd.data().users.includes(user.email))
-      return;
-    let chatsList = [...userInfo[0].chats];
-    chatsList.push(addInput);
-    usersRef.doc(user.email).update({ chats: chatsList });
-    setAddInput("");
-    addRef.current.value = "";
-    addRef.current.focus();
-  };
+  // const addChat = async () => {
+  //   const chatToAdd = await chatsRef.doc(addInput).get();
+  //   if (!chatToAdd.exists || chatToAdd.data().users.includes(user.email))
+  //     return;
+  //   let chatsList = [...userInfo[0].chats];
+  //   chatsList.push(addInput);
+  //   usersRef.doc(user.email).update({ chats: chatsList });
+  //   setAddInput("");
+  //   addRef.current.value = "";
+  //   addRef.current.focus();
+  // };
   const createChat = () => {
     let chatId = "chatroom" + new Date().getTime();
     chatsRef
@@ -55,13 +55,13 @@ function ChatRoom({ user }) {
       <h2>Chat Rooms</h2>
       <button onClick={createChat}>Create new chat room</button>
       <br />
-      <input
+      {/* <input
         name="chat-id-input"
         placeholder="enter chat id"
         onChange={(e) => setAddInput(e.target.value)}
         ref={addRef}
       />
-      <button onClick={addChat}>add chat</button>
+      <button onClick={addChat}>add chat</button> */}
 
       <div className="chat-rooms">
         {!loadingInfo ? (

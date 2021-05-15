@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import Message from "./Message";
+import randomstring from "randomstring";
 function Chat({ user, chatId }) {
   const db = firebase.firestore();
   const chatsRef = db.collection("Chats");
@@ -11,6 +12,19 @@ function Chat({ user, chatId }) {
   const [messages, loadingMessages] = useCollectionData(
     messagesRef.limit(14).orderBy("createdAt", "desc")
   );
+  const linkRef = useRef();
+  const generateLink = (e) => {
+    e.preventDefault();
+    const rnd = "inviteLink/" + randomstring.generate(20);
+    linkRef.current.hidden = false;
+    linkRef.current.value = rnd;
+    console.log(rnd);
+    linkRef.current.select();
+    document.execCommand("copy");
+    setTimeout(() => {
+      linkRef.current.hidden = true;
+    }, 15000);
+  };
   const sendMessage = (e) => {
     e.preventDefault();
     if (!textInput) return;
@@ -33,6 +47,8 @@ function Chat({ user, chatId }) {
   };
   return chatId && user ? (
     <div className="chat">
+      <button onClick={generateLink}>generate invitation link</button>
+      <input ref={linkRef} hidden={true} className="link-input" />
       <div className="messages">
         {!loadingMessages &&
           messages.map((value, index, array) => (
