@@ -28,10 +28,10 @@ function Chat({ user, chatId }) {
     chatsRef
       .doc(chatId)
       .set({ link: rndLink, password: rndPassword }, { merge: true });
-    // setTimeout(() => {
-    //   divRef.current.hidden = true;
-    //   chatsRef.doc(chatId).set({ link: "", password: "" }, { merge: true });
-    // }, 30000);
+    setTimeout(() => {
+      divRef.current.hidden = true;
+      chatsRef.doc(chatId).set({ link: "", password: "" }, { merge: true });
+    }, 300000);
   };
 
   const sendMessage = (e) => {
