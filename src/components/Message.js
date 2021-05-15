@@ -1,12 +1,8 @@
 import React from "react";
 
-function Message({ content, username, time, image, current }) {
+function Message({ content, username, time, email, image, current }) {
   return (
-    <div
-      className={`message ${
-        current.displayName === username ? "sent" : "received"
-      }`}
-    >
+    <div className={`message ${current.email === email ? "sent" : "received"}`}>
       <img src={image} className="image-icon" />
       {`[${time}] ${username}: ${content}`}
     </div>

@@ -42,6 +42,7 @@ function Chat({ user, chatId }) {
       createdAt: new Date().toLocaleTimeString("it-IT"),
       username: user.displayName,
       image: user.photoURL,
+      email: user.email,
     };
     chatsRef
       .doc(chatId)
@@ -73,6 +74,7 @@ function Chat({ user, chatId }) {
             <Message
               current={user}
               username={array[array.length - index - 1].username}
+              email={array[array.length - index - 1].email}
               time={array[array.length - index - 1].createdAt}
               content={array[array.length - index - 1].content}
               image={array[array.length - index - 1].image}
