@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import ChatRoom from "./components/ChatRoom";
+import ConfirmInvite from "./components/ConfirmInvite";
 import "./styles/app.css";
 const firebaseConfig = {
   apiKey: "AIzaSyDhYQuJpWc6qSQ97xOnN8iRe87A2n2hBT8",
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <Profile user={user} />
+          </Route>
+          <Route exact path="/invite/:link">
+            <ConfirmInvite user={user} />
           </Route>
           {user && (
             <Route exact path="/chat">

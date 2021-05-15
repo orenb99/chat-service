@@ -12,11 +12,6 @@ function ChatRoom({ user }) {
     usersRef.where("email", "==", user.email)
   );
   // const addRef = useRef();
-  useEffect(() => {
-    if (user) {
-      const query = usersRef.where("email", "==", user.email).get();
-    }
-  }, [user]);
   // const addChat = async () => {
   //   const chatToAdd = await chatsRef.doc(addInput).get();
   //   if (!chatToAdd.exists || chatToAdd.data().users.includes(user.email))

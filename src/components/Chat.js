@@ -13,18 +13,27 @@ function Chat({ user, chatId }) {
     messagesRef.limit(14).orderBy("createdAt", "desc")
   );
   const linkRef = useRef();
+  const passwordRef = useRef();
+  const divRef = useRef();
+
   const generateLink = (e) => {
     e.preventDefault();
-    const rnd = "inviteLink/" + randomstring.generate(20);
-    linkRef.current.hidden = false;
-    linkRef.current.value = rnd;
-    console.log(rnd);
+    const rndLink = randomstring.generate(15);
+    const rndPassword = randomstring.generate(10);
+    divRef.current.hidden = false;
+    linkRef.current.value = "http://localhost:3000/invite/" + rndLink;
+    passwordRef.current.value = rndPassword;
     linkRef.current.select();
     document.execCommand("copy");
-    setTimeout(() => {
-      linkRef.current.hidden = true;
-    }, 15000);
+    chatsRef
+      .doc(chatId)
+      .set({ link: rndLink, password: rndPassword }, { merge: true });
+    // setTimeout(() => {
+    //   divRef.current.hidden = true;
+    //   chatsRef.doc(chatId).set({ link: "", password: "" }, { merge: true });
+    // }, 30000);
   };
+
   const sendMessage = (e) => {
     e.preventDefault();
     if (!textInput) return;
@@ -47,8 +56,17 @@ function Chat({ user, chatId }) {
   };
   return chatId && user ? (
     <div className="chat">
-      <button onClick={generateLink}>generate invitation link</button>
-      <input ref={linkRef} hidden={true} className="link-input" />
+      <button onClick={generateLink} hidden={false}>
+        generate invitation link
+      </button>
+      <div className="link-handler" ref={divRef} hidden={true}>
+        <input name="link" ref={linkRef} className="link-input" />
+        <label htmlFor="link">invite link</label>
+        <br />
+        <input name="password" ref={passwordRef} className="password-input" />
+        <label htmlFor="password">password</label>
+        <br />
+      </div>
       <div className="messages">
         {!loadingMessages &&
           messages.map((value, index, array) => (
