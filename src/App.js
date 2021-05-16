@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import ChatRoom from "./components/ChatRoom";
+import Home from "./components/Home";
 import ConfirmInvite from "./components/ConfirmInvite";
 import "./styles/app.css";
 const firebaseConfig = {
@@ -22,8 +23,7 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 function App() {
-  const [user] = useAuthState(auth);
-  console.log(user);
+  const [user, loading] = useAuthState(auth);
   return (
     <Router>
       <div className="App">
@@ -35,11 +35,14 @@ function App() {
           <Route exact path="/sign-up">
             <SignUp />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/profile">
             <Profile user={user} />
           </Route>
           <Route exact path="/invite/:link">
             <ConfirmInvite user={user} />
+          </Route>
+          <Route exact path="/">
+            <Home user={user} loading={loading} />
           </Route>
           {user && (
             <Route exact path="/chat">

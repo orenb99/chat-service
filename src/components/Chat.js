@@ -36,7 +36,7 @@ function Chat({ user, chatId }) {
       .set({ link: rndLink, password: rndPassword }, { merge: true });
     setTimeout(() => {
       chatsRef.doc(chatId).set({ link: "", password: "" }, { merge: true });
-    }, 300000);
+    }, 30000);
   };
 
   const sendMessage = (e) => {

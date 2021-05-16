@@ -42,34 +42,61 @@
   width: 30vw;
 }
 
-.message {
-  background-color: #91fc91;
+.message-div {
+  width: 100%;
+}
+
+.message-div > .message {
   margin: 10px;
   padding: 10px;
-  border-radius: 15px;
-  width: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
+  max-width: 80%;
+  background-color: red;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
-.message > .image-icon {
-  width: 40px;
-  height: 40px;
+.message-div > .message > tr {
+  display: inline-table;
+}
+
+.message-div > .message > tr > td.img-td {
+  width: 80px;
+}
+
+.message-div > .message > tr > td.img-td > .image-icon {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  margin-right: 10px;
 }
 
-.message.sent {
+.message-div > .message > tr > td.text-td {
+  padding: 10px;
+  background-color: #91fc91;
+  border-radius: 15px;
+}
+
+.message-div > .message > tr > td.text-td > .content {
+  width: 100%;
+  background-color: red;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.message-div > .message.sent {
   float: right;
 }
 
-.message.received {
+.message-div > .message.sent > tr > td.img-td > .image-icon {
+  margin-left: 10px;
+}
+
+.message-div > .message.received {
   float: left;
+}
+
+.message-div > .message.received > tr > .img-td > .image-icon {
+  margin-left: 10px;
 }
 
 .profile > .profile-img {
@@ -211,5 +238,9 @@ input::placeholder {
   font-weight: bold;
   color: white;
   opacity: 80%;
+}
+
+.home-page {
+  text-align: center;
 }
 /*# sourceMappingURL=app.css.map */
