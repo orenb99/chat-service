@@ -7,6 +7,7 @@ function Chat({ user, chatId }) {
   const db = firebase.firestore();
   const chatsRef = db.collection("Chats");
   const messagesRef = chatsRef.doc(chatId).collection("messages");
+  const [chatData] = useCollectionData(chatsRef.where("chatId", "==", chatId));
   const [textInput, setTextInput] = useState("");
   const inputRef = useRef();
   const [messages, loadingMessages] = useCollectionData(
@@ -14,22 +15,26 @@ function Chat({ user, chatId }) {
   );
   const linkRef = useRef();
   const passwordRef = useRef();
-  const divRef = useRef();
-
+  useEffect(() => {
+    if (chatData) {
+      linkRef.current.value = chatData[0].link
+        ? "http://localhost:3000/invite/" + chatData[0].link
+        : "";
+      passwordRef.current.value = chatData[0].password
+        ? chatData[0].password
+        : "";
+      linkRef.current.select();
+      document.execCommand("copy");
+    }
+  }, [chatData]);
   const generateLink = (e) => {
     e.preventDefault();
     const rndLink = randomstring.generate(15);
     const rndPassword = randomstring.generate(10);
-    divRef.current.hidden = false;
-    linkRef.current.value = "http://localhost:3000/invite/" + rndLink;
-    passwordRef.current.value = rndPassword;
-    linkRef.current.select();
-    document.execCommand("copy");
     chatsRef
       .doc(chatId)
       .set({ link: rndLink, password: rndPassword }, { merge: true });
     setTimeout(() => {
-      divRef.current.hidden = true;
       chatsRef.doc(chatId).set({ link: "", password: "" }, { merge: true });
     }, 300000);
   };
@@ -57,27 +62,23 @@ function Chat({ user, chatId }) {
   };
   return chatId && user ? (
     <div className="chat">
-      <button onClick={generateLink} hidden={false}>
-        generate invitation link
-      </button>
-      <div className="link-handler" ref={divRef} hidden={true}>
+      <button onClick={generateLink}>generate invitation link</button>
+      <div className="link-handler">
         <input name="link" ref={linkRef} className="link-input" />
         <label htmlFor="link">invite link</label>
-        <br />
         <input name="password" ref={passwordRef} className="password-input" />
         <label htmlFor="password">password</label>
-        <br />
       </div>
       <div className="messages">
         {!loadingMessages &&
-          messages.map((value, index, array) => (
+          messages.map((value, index) => (
             <Message
               current={user}
-              username={array[array.length - index - 1].username}
-              email={array[array.length - index - 1].email}
-              time={array[array.length - index - 1].createdAt}
-              content={array[array.length - index - 1].content}
-              image={array[array.length - index - 1].image}
+              username={value.username}
+              email={value.email}
+              time={value.createdAt}
+              content={value.content}
+              image={value.image}
               key={index}
             />
           ))}

@@ -1,16 +1,75 @@
-.image-icon {
+.chat-room {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.chat-room > .chat {
+  padding: 30px;
+  width: 60vw;
+  height: 85vh;
+  background-color: #0077ff;
+}
+
+.chat-room > .chat > .link-handler {
+  display: inline;
+}
+
+.chat-room > .chat > .messages {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  border: solid;
+  height: 85%;
+  overflow-y: scroll;
+}
+
+.chat-room > .chat > .texting {
+  border: solid;
+  bottom: 0px;
+}
+
+.chat-room > .chat-rooms {
+  padding: 30px;
+  width: 30vw;
+}
+
+.message {
+  background-color: #91fc91;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.message > .image-icon {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
-.sent {
-  color: red;
+.message.sent {
+  float: right;
 }
 
-.received {
-  color: green;
+.message.received {
+  float: left;
 }
 
 .profile > .profile-img {

@@ -1,0 +1,29 @@
+.chat-room {
+  display: flex;
+  height: max-content;
+  & > .chat {
+    padding: 30px;
+    width: 60vw;
+    height: 85vh;
+    background-color: rgb(0, 119, 255);
+    & > .link-handler {
+      display: inline;
+    }
+    & > .messages {
+      padding: 10px;
+      display: flex;
+      flex-direction: column-reverse;
+      border: solid;
+      height: 85%;
+      overflow-y: scroll;
+    }
+    & > .texting {
+      border: solid;
+      bottom: 0px;
+    }
+  }
+  & > .chat-rooms {
+    padding: 30px;
+    width: 30vw;
+  }
+}

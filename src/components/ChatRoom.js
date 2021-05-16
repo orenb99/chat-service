@@ -33,25 +33,28 @@ function ChatRoom({ user }) {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
-      <h2>Chat Rooms</h2>
-      <button onClick={createChat}>Create new chat room</button>
-      <br />
+    <div className="chat-room">
       <div className="chat-rooms">
-        {!loadingInfo && userInfo[0].chats ? (
-          userInfo[0].chats.map((value, index) => (
-            <h3
-              key={index}
-              onClick={() => {
-                setCurrentChat(value);
-              }}
-            >
-              {value}
-            </h3>
-          ))
-        ) : (
-          <h3>No chats available</h3>
-        )}
+        <h1 className="headline">Chat Rooms</h1>
+        <button onClick={createChat}>Create new chat room</button>
+        <br />
+        <div className="rooms">
+          {!loadingInfo && userInfo[0].chats ? (
+            userInfo[0].chats.map((value, index) => (
+              <h2
+                className="chat-title"
+                key={index}
+                onClick={() => {
+                  setCurrentChat(value);
+                }}
+              >
+                {value}
+              </h2>
+            ))
+          ) : (
+            <h3>No chats available</h3>
+          )}
+        </div>
       </div>
       {currentChat && <Chat user={user} chatId={currentChat} />}
     </div>
