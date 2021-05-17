@@ -6,11 +6,7 @@ function Navbar({ user }) {
     <nav className="nav-bar">
       {user ? (
         <>
-          <NavLink
-            className="nav-link"
-            to="/profile"
-            activeClassName="inactive"
-          >
+          <NavLink className="nav-link" to="/profile" activeClassName="active">
             Profile
           </NavLink>
           <NavLink className="nav-link" to="/chat" activeClassName="active">

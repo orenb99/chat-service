@@ -12,8 +12,8 @@ function SignIn() {
     firebase
       .auth()
       .signInWithEmailAndPassword(emailInput, passwordInput)
-      .then(() => {
-        history.push("/");
+      .then((user) => {
+        history.push("/profile");
       })
       .catch((err) => {
         errMessage.current.innerText = err.message;

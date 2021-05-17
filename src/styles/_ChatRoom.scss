@@ -1,11 +1,12 @@
 .chat-room {
   display: flex;
   height: max-content;
+  height: 93vh;
   & > .chat {
     background-color: rgb(0, 119, 255);
     min-width: 600px;
     width: 65vw;
-    height: 93vh;
+    height: 100%;
     & > .link-handler {
       padding: 2%;
       height: 7%;
@@ -25,5 +26,14 @@
     min-width: 280px;
     padding: 30px;
     width: 35vw;
+    & > .rooms {
+      height: 70%;
+      overflow-y: auto;
+      & > .room-title {
+        margin: 0;
+        padding: 22px;
+        width: auto;
+      }
+    }
   }
 }

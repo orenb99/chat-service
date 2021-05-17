@@ -30,6 +30,7 @@ button {
 .headline {
   color: $NavColor;
   font-size: 70px;
+  margin: 20px;
 }
 input {
   &::placeholder {
@@ -51,4 +52,19 @@ input {
 }
 .home-page {
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: unset;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $borderColor;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(8, 117, 153);
 }

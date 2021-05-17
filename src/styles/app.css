@@ -5,13 +5,14 @@
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+  height: 93vh;
 }
 
 .chat-room > .chat {
   background-color: #0077ff;
   min-width: 600px;
   width: 65vw;
-  height: 93vh;
+  height: 100%;
 }
 
 .chat-room > .chat > .link-handler {
@@ -40,6 +41,17 @@
   min-width: 280px;
   padding: 30px;
   width: 35vw;
+}
+
+.chat-room > .chat-rooms > .rooms {
+  height: 70%;
+  overflow-y: auto;
+}
+
+.chat-room > .chat-rooms > .rooms > .room-title {
+  margin: 0;
+  padding: 22px;
+  width: auto;
 }
 
 .message-div {
@@ -124,10 +136,6 @@
   color: #bafdfa;
 }
 
-.nav-link.inactive {
-  color: whitesmoke;
-}
-
 .nav-link:hover {
   color: #bafdfa;
 }
@@ -195,6 +203,7 @@ button:hover {
 .headline {
   color: #49b8dd;
   font-size: 70px;
+  margin: 20px;
 }
 
 input {
@@ -240,5 +249,21 @@ input::placeholder {
 
 .home-page {
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: unset;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0992c0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #087599;
 }
 /*# sourceMappingURL=app.css.map */

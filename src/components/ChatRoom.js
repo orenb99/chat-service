@@ -48,7 +48,7 @@ function ChatRoom({ user }) {
           {!loadingInfo && userInfo[0].chats ? (
             userInfo[0].chats.map((value, index) => (
               <h2
-                className="chat-title"
+                className="room-title"
                 key={index}
                 onClick={() => {
                   setCurrentChat(value);
