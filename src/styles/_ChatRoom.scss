@@ -1,7 +1,9 @@
 .chat-room {
+  min-width: 1000px;
   display: flex;
   height: max-content;
   & > .chat {
+    min-width: 600px;
     padding: 30px;
     width: 60vw;
     height: 85vh;

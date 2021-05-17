@@ -16,13 +16,16 @@ function Profile({ user }) {
     if (editing) editButton.current.innerText = "save";
     else editButton.current.innerText = "edit";
   }, [editing]);
+
   useEffect(() => {
     if (user) setImageUrl(user.photoURL);
   }, [user]);
+
   const editUsername = async () => {
     if (editing) {
       const regexp = /^[a-zA-Z0-9 ]*$/;
-      if (!editInput || !editInput.match(regexp)) return;
+      if (!editInput || !editInput.match(regexp) || editInput.length > 40)
+        return;
       await user.updateProfile({ displayName: editInput });
     }
     setEditInput("");

@@ -10,6 +10,7 @@ function Chat({ user, chatId }) {
   const [chatData] = useCollectionData(chatsRef.where("chatId", "==", chatId));
   const [textInput, setTextInput] = useState("");
   const inputRef = useRef();
+  const scroll = useRef();
   const [messages, loadingMessages] = useCollectionData(
     messagesRef.limit(14).orderBy("createdAt", "desc")
   );
@@ -39,12 +40,13 @@ function Chat({ user, chatId }) {
     }, 30000);
   };
 
-  const sendMessage = (e) => {
+  const sendMessage = async (e) => {
+    console.log(e.target);
     e.preventDefault();
     if (!textInput) return;
     const message = {
       content: textInput,
-      createdAt: new Date().toLocaleTimeString("it-IT"),
+      createdAt: new Date(),
       username: user.displayName,
       image: user.photoURL,
       email: user.email,
@@ -54,7 +56,7 @@ function Chat({ user, chatId }) {
       .collection("messages")
       .add(message)
       .then(() => {
-        console.log("send");
+        scroll.current.scrollIntoView({ behavior: "smooth" });
         inputRef.current.value = "";
         setTextInput("");
         inputRef.current.focus();
@@ -82,6 +84,7 @@ function Chat({ user, chatId }) {
               key={index}
             />
           ))}
+        <div ref={scroll}></div>
       </div>
       <div className="texting">
         <input
