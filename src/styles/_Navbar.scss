@@ -8,13 +8,13 @@ $borderColor: rgb(9, 146, 192);
   width: 100vw;
 }
 .nav-link {
-  color: whitesmoke;
+  color: black;
   font-size: 30px;
   font-weight: bold;
   &.active {
-    color: rgb(186, 253, 250);
+    color: rgb(50, 50, 50);
   }
   &:hover {
-    color: rgb(186, 253, 250);
+    color: rgb(50, 50, 50);
   }
 }

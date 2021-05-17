@@ -7,22 +7,17 @@
 $NavColor: rgb(73, 184, 221);
 $borderColor: rgb(9, 146, 192);
 body {
-  background-image: linear-gradient(
-    180deg,
-    rgb(206, 247, 243),
-    rgb(210, 239, 248)
-  );
-  background-size: 100vw 100vh;
+  background-color: rgb(194, 239, 245);
 }
 button {
   &:hover {
     cursor: pointer;
-    border: solid 2px white;
+    border: solid 2px black;
   }
   font-size: 25px;
   font-weight: bolder;
-  background-color: $NavColor;
-  color: whitesmoke;
+  background-color: rgb(206, 247, 243);
+  color: black;
   border: solid $borderColor 2px;
   border-radius: 5px;
   padding: 5px;
@@ -36,7 +31,7 @@ input {
   &::placeholder {
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: black;
     opacity: 80%;
   }
   width: 250px;
@@ -45,10 +40,10 @@ input {
   margin: 10px;
   font-size: 20px;
   font-weight: bold;
-  color: white;
+  color: black;
   border: solid 2px $borderColor;
   border-radius: 10px;
-  background-color: $NavColor;
+  background-color: rgb(206, 247, 243);
 }
 .home-page {
   text-align: center;
