@@ -1,5 +1,4 @@
 .chat-room {
-  min-width: 1000px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,19 +8,19 @@
 }
 
 .chat-room > .chat {
-  min-width: 600px;
-  padding: 30px;
-  width: 60vw;
-  height: 85vh;
   background-color: #0077ff;
+  min-width: 600px;
+  width: 65vw;
+  height: 93vh;
 }
 
 .chat-room > .chat > .link-handler {
-  display: inline;
+  padding: 2%;
+  height: 7%;
 }
 
 .chat-room > .chat > .messages {
-  padding: 10px;
+  background-color: #8bbbf1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,19 +28,18 @@
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
-  border: solid;
-  height: 85%;
+  height: 80%;
   overflow-y: scroll;
 }
 
 .chat-room > .chat > .texting {
-  border: solid;
-  bottom: 0px;
+  height: 5 .chat-room > .chat > .texting;
 }
 
 .chat-room > .chat-rooms {
+  min-width: 280px;
   padding: 30px;
-  width: 30vw;
+  width: 35vw;
 }
 
 .message-div {

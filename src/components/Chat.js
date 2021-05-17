@@ -64,8 +64,8 @@ function Chat({ user, chatId }) {
   };
   return chatId && user ? (
     <div className="chat">
-      <button onClick={generateLink}>generate invitation link</button>
       <div className="link-handler">
+        <button onClick={generateLink}>generate invitation link</button>
         <input name="link" ref={linkRef} className="link-input" />
         <label htmlFor="link">invite link</label>
         <input name="password" ref={passwordRef} className="password-input" />

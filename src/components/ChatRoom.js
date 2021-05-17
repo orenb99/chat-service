@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import Chat from "./Chat";
@@ -10,6 +10,9 @@ function ChatRoom({ user }) {
   const [userInfo, loadingInfo] = useCollectionData(
     usersRef.where("email", "==", user.email)
   );
+  useEffect(() => {
+    if (userInfo) if (userInfo[0].chats) setCurrentChat(userInfo[0].chats[0]);
+  }, [userInfo]);
   const createChat = () => {
     let chatId = "chatroom" + new Date().getTime();
     chatsRef
@@ -23,10 +26,13 @@ function ChatRoom({ user }) {
             .catch((err) => console.log(err));
         } else {
           let arrayToTransfer = [...userInfo[0].chats];
-          arrayToTransfer.push(chatId);
+          arrayToTransfer.unshift(chatId);
           usersRef
             .doc(user.email)
             .update({ chats: arrayToTransfer })
+            .then(() => {
+              setCurrentChat(chatId);
+            })
             .catch((err) => console.log(err));
         }
       })
