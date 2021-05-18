@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import firebase from "firebase";
 
 function SignIn() {
@@ -58,6 +58,11 @@ function SignIn() {
       <button name="submit" onClick={SignUpWithPassword}>
         Enter
       </button>
+      <div className="change">
+        Doesn't have a user?
+        <br />
+        <Link to="/sign-up">Sign Up!</Link>
+      </div>
       <h2 className="err-message" ref={errMessage}></h2>
     </div>
   );

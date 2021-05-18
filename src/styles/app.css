@@ -1,61 +1,49 @@
 .chat-room {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  height: 93vh;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 30vw;
+  padding: 0 2vw 0 2vw;
+  text-overflow: ellipsis;
 }
 
-.chat-room > .chat {
-  background-color: #8bdae7;
-  min-width: 600px;
-  width: 65vw;
-  height: 100%;
+.chat-room > .profile-link {
+  text-decoration: none;
 }
 
-.chat-room > .chat > .link-handler {
-  padding: 2%;
-  height: 7%;
+.chat-room > .profile-link > h3 {
+  color: black;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
-.chat-room > .chat > .messages {
-  background-color: #cef7f3;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
-  height: 80%;
-  overflow-y: scroll;
+.chat-room > .profile-link > h3:hover {
+  color: #4d4d4d;
 }
 
-.chat-room > .chat > .texting {
-  height: 5 .chat-room > .chat > .texting;
-}
-
-.chat-room > .chat-rooms {
-  min-width: 280px;
-  padding: 30px;
-  width: 35vw;
-}
-
-.chat-room > .chat-rooms > .rooms {
-  height: 70%;
+.chat-room > .rooms {
+  margin-top: 5%;
+  height: 60%;
   overflow-y: auto;
 }
 
-.chat-room > .chat-rooms > .rooms > .room-title {
-  border-bottom: solid;
-  margin: 0;
-  padding: 22px;
+.chat-room > .rooms > .room-title {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.chat-room > .chat-rooms > .rooms:hover {
-  cursor: pointer;
+.chat-room > .rooms > .room-title > h2 {
+  padding: 15px;
+  margin: 0;
+}
+
+.chat-room > .rooms > .room-title.active {
+  color: #323232;
+}
+
+.chat-room > .rooms > .room-title:hover {
+  color: #323232;
 }
 
 .message-div {
@@ -113,35 +101,32 @@
   margin-left: 10px;
 }
 
+.profile {
+  background-color: #c2eff5;
+  text-align: center;
+  position: fixed;
+  left: 35vw;
+  width: 65vw;
+  height: 100vh;
+}
+
 .profile > .profile-img {
   width: 300px;
   height: 300px;
   border-radius: 50%;
 }
 
-.nav-bar {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  background-color: #49b8dd;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  height: 7vh;
-  width: 100vw;
-}
-
-.nav-link {
-  color: black;
+.profile > .username {
   font-size: 30px;
   font-weight: bold;
 }
 
-.nav-link.active {
-  color: #323232;
+.profile > button {
+  margin-left: 20px;
 }
 
-.nav-link:hover {
-  color: #323232;
+.profile > input {
+  margin: 35px 0 35px 0;
 }
 
 .sign-up,
@@ -183,6 +168,46 @@
   margin-right: 20px;
 }
 
+.chat {
+  background-color: #8bdae7;
+  min-width: 400px;
+  width: 65vw;
+  height: 100vh;
+  position: fixed;
+  left: 35vw;
+}
+
+.chat > .link-handler {
+  padding: 2%;
+  height: 7%;
+}
+
+.chat > .messages {
+  background-color: #cef7f3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  height: 80%;
+  overflow-y: scroll;
+}
+
+.chat > .texting {
+  height: 5%;
+}
+
+.chat > .texting > input {
+  width: 80%;
+}
+
+.chat > .texting > button {
+  margin: auto;
+  font-size: 1.5em;
+}
+
 body {
   background-color: #c2eff5;
 }
@@ -204,7 +229,7 @@ button:hover {
 
 .headline {
   color: #49b8dd;
-  font-size: 70px;
+  font-size: 4.5em;
   margin: 20px;
 }
 

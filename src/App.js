@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
-import Navbar from "./components/Navbar";
 import ChatRoom from "./components/ChatRoom";
 import Home from "./components/Home";
 import ConfirmInvite from "./components/ConfirmInvite";
 import "./styles/app.css";
+import Chat from "./components/Chat";
 const firebaseConfig = {
   apiKey: "AIzaSyDhYQuJpWc6qSQ97xOnN8iRe87A2n2hBT8",
   authDomain: "chat-service-d13a1.firebaseapp.com",
@@ -24,10 +24,11 @@ const auth = firebase.auth();
 
 function App() {
   const [user, loading] = useAuthState(auth);
+  const [currentChat, setCurrentChat] = useState();
   return (
     <Router>
       <div className="App">
-        <Navbar user={user} />
+        {user && <ChatRoom user={user} setCurrentChat={setCurrentChat} />}
         <Switch>
           <Route exact path="/sign-in">
             <SignIn />
@@ -46,7 +47,7 @@ function App() {
           </Route>
           {user && (
             <Route exact path="/chat">
-              <ChatRoom user={user} />
+              <Chat user={user} chatId={currentChat} />
             </Route>
           )}
         </Switch>

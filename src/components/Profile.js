@@ -57,7 +57,9 @@ function Profile({ user }) {
       />
       <button onClick={editPicture}>save</button>
       <br />
-      <label htmlFor="username">your username: </label>
+      <label className="username" htmlFor="username">
+        Your username:{" "}
+      </label>
       {editing ? (
         <input
           name="username"
@@ -66,12 +68,15 @@ function Profile({ user }) {
           }}
         />
       ) : (
-        <strong name="username">{user ? user.displayName : "loading"}</strong>
+        <strong className="username" name="username">
+          {user ? user.displayName : "loading"}
+        </strong>
       )}
 
       <button ref={editButton} onClick={editUsername}>
         edit
       </button>
+      <br />
       <button
         name="Logout"
         onClick={() => {

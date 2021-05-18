@@ -1,7 +1,23 @@
 .profile {
+  background-color: rgb(194, 239, 245);
+  text-align: center;
+  position: fixed;
+  left: 35vw;
+  width: 65vw;
+  height: 100vh;
   & > .profile-img {
     width: 300px;
     height: 300px;
     border-radius: 50%;
+  }
+  & > .username {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  & > button {
+    margin-left: 20px;
+  }
+  & > input {
+    margin: 35px 0 35px 0;
   }
 }

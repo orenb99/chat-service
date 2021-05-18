@@ -1,41 +1,38 @@
 .chat-room {
-  display: flex;
-  height: max-content;
-  height: 93vh;
-  & > .chat {
-    background-color: rgb(139, 218, 231);
-    min-width: 600px;
-    width: 65vw;
-    height: 100%;
-    & > .link-handler {
-      padding: 2%;
-      height: 7%;
-    }
-    & > .messages {
-      background-color: rgb(206, 247, 243);
-      display: flex;
-      flex-direction: column-reverse;
-      height: 80%;
-      overflow-y: scroll;
-    }
-    & > .texting {
-      height: 5&;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 30vw;
+  padding: 0 2vw 0 2vw;
+  text-overflow: ellipsis;
+  & > .profile-link {
+    text-decoration: none;
+    & > h3 {
+      color: black;
+      font-size: 30px;
+      margin-bottom: 10px;
+      &:hover {
+        color: rgb(77, 77, 77);
+      }
     }
   }
-  & > .chat-rooms {
-    min-width: 280px;
-    padding: 30px;
-    width: 35vw;
-    & > .rooms {
-      height: 70%;
-      overflow-y: auto;
-      & > .room-title {
-        border-bottom: solid;
+  & > .rooms {
+    margin-top: 5%;
+    height: 60%;
+    overflow-y: auto;
+    & > .room-title {
+      color: black;
+      font-size: 20px;
+      font-weight: bold;
+      & > h2 {
+        padding: 15px;
         margin: 0;
-        padding: 22px;
+      }
+      &.active {
+        color: rgb(50, 50, 50);
       }
       &:hover {
-        cursor: pointer;
+        color: rgb(50, 50, 50);
       }
     }
   }
