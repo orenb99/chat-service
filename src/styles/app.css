@@ -38,12 +38,12 @@
   margin: 0;
 }
 
-.chat-room > .rooms > .room-title.active {
+.chat-room > .rooms > .room-title:hover {
   color: #323232;
 }
 
-.chat-room > .rooms > .room-title:hover {
-  color: #323232;
+.confirm-page {
+  text-align: center;
 }
 
 .message-div {
@@ -102,7 +102,7 @@
 }
 
 .profile {
-  background-color: #c2eff5;
+  background-color: #8bdae7;
   text-align: center;
   position: fixed;
   left: 35vw;
@@ -168,9 +168,21 @@
   margin-right: 20px;
 }
 
+.sign-up > .change,
+.sign-in > .change {
+  margin: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.sign-up > .change > a,
+.sign-in > .change > a {
+  text-decoration: none;
+}
+
 .chat {
   background-color: #8bdae7;
-  min-width: 400px;
+  min-width: 425px;
   width: 65vw;
   height: 100vh;
   position: fixed;
@@ -178,8 +190,30 @@
 }
 
 .chat > .link-handler {
-  padding: 2%;
-  height: 7%;
+  padding: 2% 1% 2% 1%;
+  height: 5%;
+}
+
+.chat > .link-handler > label {
+  overflow-wrap: none;
+  text-transform: capitalize;
+  font-size: 1.3vw;
+  font-weight: bold;
+}
+
+.chat > .link-handler > button {
+  font-size: 1.3vw;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.chat > .link-handler > input {
+  font-size: 1.3vw;
+  width: 15vw;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
 }
 
 .chat > .messages {
@@ -187,25 +221,30 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 83%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
-  height: 80%;
   overflow-y: scroll;
 }
 
 .chat > .texting {
+  text-align: center;
   height: 5%;
+  display: inline-block;
+  width: 100%;
 }
 
 .chat > .texting > input {
-  width: 80%;
+  width: 50vw;
+  font-size: 2.4vh;
 }
 
 .chat > .texting > button {
   margin: auto;
-  font-size: 1.5em;
+  width: 5vw;
+  font-size: 2.4vh;
 }
 
 body {
@@ -292,5 +331,10 @@ input::placeholder {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #087599;
+}
+
+.error-message {
+  font-size: 50px;
+  color: #5f0707;
 }
 /*# sourceMappingURL=app.css.map */

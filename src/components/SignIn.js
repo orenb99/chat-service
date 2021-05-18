@@ -63,7 +63,7 @@ function SignIn() {
         <br />
         <Link to="/sign-up">Sign Up!</Link>
       </div>
-      <h2 className="err-message" ref={errMessage}></h2>
+      <h2 className="error-message" ref={errMessage}></h2>
     </div>
   );
 }

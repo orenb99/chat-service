@@ -102,7 +102,7 @@ function SignUp() {
         <br />
         <Link to="/sign-in">Sign In!</Link>
       </div>
-      <h2 className="err-message" ref={errMessage}></h2>
+      <h2 className="error-message" ref={errMessage}></h2>
     </div>
   );
 }

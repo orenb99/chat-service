@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, NavLink } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 function ChatRoom({ user, setCurrentChat }) {
@@ -38,7 +38,7 @@ function ChatRoom({ user, setCurrentChat }) {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="chat-room">
+    <div className="chat-room" hidden={useLocation().pathname.length > 20}>
       <h1 className="headline">Chat Rooms</h1>
       <NavLink className="profile-link" to="/profile">
         <h3>Go to profile</h3>
