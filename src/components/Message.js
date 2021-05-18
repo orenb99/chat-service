@@ -13,7 +13,7 @@ function Message({ content, username, time, email, image, current }) {
     for (let char of text) {
       if (char === " ") counter = 0;
       else counter++;
-      if (counter === Math.floor(windowWidth / 27)) {
+      if (counter === Math.floor(windowWidth / 22)) {
         fixedText += "\n";
         counter = 0;
       }

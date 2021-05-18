@@ -1,61 +1,49 @@
 .chat-room {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  height: 93vh;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 30vw;
+  padding: 0 2vw 0 2vw;
+  text-overflow: ellipsis;
 }
 
-.chat-room > .chat {
-  background-color: #8bdae7;
-  min-width: 600px;
-  width: 65vw;
-  height: 100%;
+.chat-room > .profile-link {
+  text-decoration: none;
 }
 
-.chat-room > .chat > .link-handler {
-  padding: 2%;
-  height: 7%;
+.chat-room > .profile-link > h3 {
+  color: black;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
-.chat-room > .chat > .messages {
-  background-color: #cef7f3;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
-  height: 80%;
-  overflow-y: scroll;
+.chat-room > .profile-link > h3:hover {
+  color: #4d4d4d;
 }
 
-.chat-room > .chat > .texting {
-  height: 5 .chat-room > .chat > .texting;
-}
-
-.chat-room > .chat-rooms {
-  min-width: 280px;
-  padding: 30px;
-  width: 35vw;
-}
-
-.chat-room > .chat-rooms > .rooms {
-  height: 70%;
+.chat-room > .rooms {
+  margin-top: 5%;
+  height: 60%;
   overflow-y: auto;
 }
 
-.chat-room > .chat-rooms > .rooms > .room-title {
-  border-bottom: solid;
-  margin: 0;
-  padding: 22px;
+.chat-room > .rooms > .room-title {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.chat-room > .chat-rooms > .rooms:hover {
-  cursor: pointer;
+.chat-room > .rooms > .room-title > h2 {
+  padding: 15px;
+  margin: 0;
+}
+
+.chat-room > .rooms > .room-title:hover {
+  color: #323232;
+}
+
+.confirm-page {
+  text-align: center;
 }
 
 .message-div {
@@ -113,35 +101,32 @@
   margin-left: 10px;
 }
 
+.profile {
+  background-color: #8bdae7;
+  text-align: center;
+  position: fixed;
+  left: 35vw;
+  width: 65vw;
+  height: 100vh;
+}
+
 .profile > .profile-img {
   width: 300px;
   height: 300px;
   border-radius: 50%;
 }
 
-.nav-bar {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  background-color: #49b8dd;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  height: 7vh;
-  width: 100vw;
-}
-
-.nav-link {
-  color: black;
+.profile > .username {
   font-size: 30px;
   font-weight: bold;
 }
 
-.nav-link.active {
-  color: #323232;
+.profile > button {
+  margin-left: 20px;
 }
 
-.nav-link:hover {
-  color: #323232;
+.profile > input {
+  margin: 35px 0 35px 0;
 }
 
 .sign-up,
@@ -183,6 +168,85 @@
   margin-right: 20px;
 }
 
+.sign-up > .change,
+.sign-in > .change {
+  margin: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.sign-up > .change > a,
+.sign-in > .change > a {
+  text-decoration: none;
+}
+
+.chat {
+  background-color: #8bdae7;
+  min-width: 425px;
+  width: 65vw;
+  height: 100vh;
+  position: fixed;
+  left: 35vw;
+}
+
+.chat > .link-handler {
+  padding: 2% 1% 2% 1%;
+  height: 5%;
+}
+
+.chat > .link-handler > label {
+  overflow-wrap: none;
+  text-transform: capitalize;
+  font-size: 1.3vw;
+  font-weight: bold;
+}
+
+.chat > .link-handler > button {
+  font-size: 1.3vw;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.chat > .link-handler > input {
+  font-size: 1.3vw;
+  width: 15vw;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.chat > .messages {
+  background-color: #cef7f3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 83%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  overflow-y: scroll;
+}
+
+.chat > .texting {
+  text-align: center;
+  height: 5%;
+  display: inline-block;
+  width: 100%;
+}
+
+.chat > .texting > input {
+  width: 50vw;
+  font-size: 2.4vh;
+}
+
+.chat > .texting > button {
+  margin: auto;
+  width: 5vw;
+  font-size: 2.4vh;
+}
+
 body {
   background-color: #c2eff5;
 }
@@ -204,7 +268,7 @@ button:hover {
 
 .headline {
   color: #49b8dd;
-  font-size: 70px;
+  font-size: 4.5em;
   margin: 20px;
 }
 
@@ -267,5 +331,10 @@ input::placeholder {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #087599;
+}
+
+.error-message {
+  font-size: 50px;
+  color: #5f0707;
 }
 /*# sourceMappingURL=app.css.map */

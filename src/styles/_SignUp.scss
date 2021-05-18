@@ -33,4 +33,12 @@ $borderColor: rgb(9, 146, 192);
       margin-right: 20px;
     }
   }
+  & > .change {
+    margin: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    & > a {
+      text-decoration: none;
+    }
+  }
 }

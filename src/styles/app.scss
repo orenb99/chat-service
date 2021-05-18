@@ -2,8 +2,8 @@
 @import "./Confirm";
 @import "./Message";
 @import "./Profile";
-@import "./Navbar";
 @import "./SignUp";
+@import "./Chat";
 $NavColor: rgb(73, 184, 221);
 $borderColor: rgb(9, 146, 192);
 body {
@@ -24,7 +24,7 @@ button {
 }
 .headline {
   color: $NavColor;
-  font-size: 70px;
+  font-size: 4.5em;
   margin: 20px;
 }
 input {
@@ -62,4 +62,8 @@ input {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(8, 117, 153);
+}
+.error-message {
+  font-size: 50px;
+  color: rgb(95, 7, 7);
 }

@@ -52,7 +52,7 @@ function ConfirmInvite({ user }) {
     history.push("/chat");
   };
   return (
-    <div>
+    <div className="confirm-page">
       {user && valid && (
         <>
           <label htmlFor="password">Confirm password</label>
@@ -67,7 +67,7 @@ function ConfirmInvite({ user }) {
           <button onClick={confirmPassword}>confirm</button>
         </>
       )}
-      <h1 ref={errorMessage} className="err-message">
+      <h1 ref={errorMessage} className="error-message">
         {!user && "User not connected"}
       </h1>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import firebase from "firebase";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 function SignUp() {
   const history = useHistory();
   const [emailInput, setEmailInput] = useState("");
@@ -61,43 +61,48 @@ function SignUp() {
         Sign up with google
       </button>
       <br />
-        <input
-          name="text"
-          placeholder="enter your email"
-          onChange={(e) => {
-            setEmailInput(e.target.value);
-          }}
-        />
-        <br />
-        <input
-          name="password"
-          type="password"
-          placeholder="enter your password"
-          ref={passwordRef}
-          onChange={(e) => {
-            setPasswordInput(e.target.value);
-          }}
-        />
-        <button
-          name="show-password"
-          className="show-password"
-          onMouseDown={() => {
-            passwordRef.current.type = "text";
-          }}
-          onMouseUp={() => {
-            passwordRef.current.type = "password";
-          }}
-          onMouseOut={() => {
-            passwordRef.current.type = "password";
-          }}
-        >
-          👁
-        </button>
-        <br />
+      <input
+        name="text"
+        placeholder="enter your email"
+        onChange={(e) => {
+          setEmailInput(e.target.value);
+        }}
+      />
+      <br />
+      <input
+        name="password"
+        type="password"
+        placeholder="enter your password"
+        ref={passwordRef}
+        onChange={(e) => {
+          setPasswordInput(e.target.value);
+        }}
+      />
+      <button
+        name="show-password"
+        className="show-password"
+        onMouseDown={() => {
+          passwordRef.current.type = "text";
+        }}
+        onMouseUp={() => {
+          passwordRef.current.type = "password";
+        }}
+        onMouseOut={() => {
+          passwordRef.current.type = "password";
+        }}
+      >
+        👁
+      </button>
+      <br />
       <button name="submit" onClick={SignUpWithPassword}>
         Register
       </button>
-      <h2 className="err-message" ref={errMessage}></h2>
+      <div className="change">
+        Already have a user?
+        <br />
+        <Link to="/sign-in">Sign In!</Link>
+      </div>
+      <h2 className="error-message" ref={errMessage}></h2>
     </div>
   );
 }
