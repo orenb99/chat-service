@@ -9,7 +9,7 @@
 }
 
 .chat-room > .chat {
-  background-color: rgba(145, 238, 229, 0.308);
+  background-color: #8bdae7;
   min-width: 600px;
   width: 65vw;
   height: 100%;
@@ -52,7 +52,10 @@
   border-bottom: solid;
   margin: 0;
   padding: 22px;
-  width: auto;
+}
+
+.chat-room > .chat-rooms > .rooms:hover {
+  cursor: pointer;
 }
 
 .message-div {
@@ -181,7 +184,7 @@
 }
 
 body {
-  background-color: #93f7ed;
+  background-color: #c2eff5;
 }
 
 button {

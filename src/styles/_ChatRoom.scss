@@ -3,7 +3,7 @@
   height: max-content;
   height: 93vh;
   & > .chat {
-    background-color: rgba(139, 218, 231);
+    background-color: rgb(139, 218, 231);
     min-width: 600px;
     width: 65vw;
     height: 100%;
@@ -33,7 +33,9 @@
         border-bottom: solid;
         margin: 0;
         padding: 22px;
-        width: auto;
+      }
+      &:hover {
+        cursor: pointer;
       }
     }
   }
