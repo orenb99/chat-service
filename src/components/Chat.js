@@ -14,12 +14,13 @@ function Chat({ user, chatId }) {
   const [messages, loadingMessages] = useCollectionData(
     messagesRef.limit(14).orderBy("createdAt", "desc")
   );
+  const origin = window.location.origin;
   const linkRef = useRef();
   const passwordRef = useRef();
   useEffect(() => {
     if (chatData) {
       linkRef.current.value = chatData[0].link
-        ? "http://localhost:3000/invite/" + chatData[0].link
+        ? origin + "/invite/" + chatData[0].link
         : "";
       passwordRef.current.value = chatData[0].password
         ? chatData[0].password

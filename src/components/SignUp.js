@@ -5,7 +5,7 @@ function SignUp() {
   const history = useHistory();
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const errMessage = useRef();
+  const [errorMessage, setError] = useState();
   const passwordRef = useRef();
   const db = firebase.firestore();
   const SignUpWithGoogle = () => {
@@ -24,7 +24,7 @@ function SignUp() {
             history.push("/");
           })
           .catch((err) => {
-            errMessage.current.innerText = err.message;
+            setError(err.message);
           });
       });
   };
@@ -48,10 +48,10 @@ function SignUp() {
             history.push("/");
           })
           .catch((err) => {
-            errMessage.current.innerText = err.message;
+            setError(err.message);
           });
       })
-      .catch((err) => (errMessage.current.innerText = err.message));
+      .catch((err) => setError(err.message));
   };
   return (
     <div className="sign-up">
@@ -102,7 +102,7 @@ function SignUp() {
         <br />
         <Link to="/sign-in">Sign In!</Link>
       </div>
-      <h2 className="error-message" ref={errMessage}></h2>
+      <h2 className="error-message">{errorMessage}</h2>
     </div>
   );
 }

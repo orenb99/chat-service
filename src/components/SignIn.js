@@ -6,7 +6,7 @@ function SignIn() {
   const history = useHistory();
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const errMessage = useRef();
+  const [errorMessage, setError] = useState();
   const passwordRef = useRef();
   const SignUpWithPassword = () => {
     firebase
@@ -16,7 +16,7 @@ function SignIn() {
         history.push("/profile");
       })
       .catch((err) => {
-        errMessage.current.innerText = err.message;
+        setError(err.message);
       });
   };
   return (
@@ -63,7 +63,7 @@ function SignIn() {
         <br />
         <Link to="/sign-up">Sign Up!</Link>
       </div>
-      <h2 className="error-message" ref={errMessage}></h2>
+      <h2 className="error-message">{errorMessage}</h2>
     </div>
   );
 }

@@ -45,7 +45,7 @@ function App() {
           <Route exact path="/">
             <Home user={user} loading={loading} />
           </Route>
-          {user && (
+          {user && currentChat && (
             <Route exact path="/chat">
               <Chat user={user} chatId={currentChat} />
             </Route>

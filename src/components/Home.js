@@ -4,7 +4,6 @@ function Home({ user, loading }) {
   const history = useHistory();
   useEffect(() => {
     if (!loading) {
-      console.log(user);
       if (user) history.push("/profile");
       else history.push("/sign-up");
     }

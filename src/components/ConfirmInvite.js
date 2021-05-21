@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 import { useParams } from "react-router";
@@ -7,7 +7,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 function ConfirmInvite({ user }) {
   const db = firebase.firestore();
   const chatsRef = db.collection("Chats");
-  const errorMessage = useRef();
+  const [errorMessage, setError] = useState();
   const usersRef = db.collection("Users");
   const linkParam = useParams().link;
   const [password, setPassword] = useState();
@@ -19,10 +19,10 @@ function ConfirmInvite({ user }) {
   useEffect(() => {
     if (!loading && user) {
       if (!chatInfo[0]) {
-        errorMessage.current.innerText = "Invalid Link";
+        setError("Invalid Link");
         setValid(false);
       } else if (chatInfo[0].users.includes(user.email)) {
-        errorMessage.current.innerText = "User already in this chat";
+        setError("User already in this chat");
         setValid(false);
       }
     }
@@ -30,7 +30,7 @@ function ConfirmInvite({ user }) {
 
   const confirmPassword = async () => {
     if (password !== chatInfo[0].password) {
-      errorMessage.current.innerText = "Incorrect password";
+      setError("Incorrect password");
       return;
     }
     let updatedChats = await usersRef.where("email", "==", user.email).get();
@@ -64,8 +64,8 @@ function ConfirmInvite({ user }) {
           <button onClick={confirmPassword}>confirm</button>
         </>
       )}
-      <h1 ref={errorMessage} className="error-message">
-        {!user && "User not connected"}
+      <h1 className="error-message">
+        {user ? errorMessage : "User not connected"}
       </h1>
     </div>
   );
