@@ -25,10 +25,7 @@ function ChatRoom({ user, setCurrentChat }) {
       .set({ chatId, users: [user.email] })
       .then(() => {
         if (userInfo[0].chats === undefined) {
-          usersRef
-            .doc(user.email)
-            .update({ chats: [chatId] })
-            .catch((err) => console.log(err));
+          usersRef.doc(user.email).update({ chats: [chatId] });
         } else {
           let arrayToTransfer = [...userInfo[0].chats];
           arrayToTransfer.unshift(chatId);
@@ -37,11 +34,9 @@ function ChatRoom({ user, setCurrentChat }) {
             .update({ chats: arrayToTransfer })
             .then(() => {
               setCurrentChat(chatId);
-            })
-            .catch((err) => console.log(err));
+            });
         }
-      })
-      .catch((err) => console.log(err));
+      });
   };
   return (
     <div className="chat-room">

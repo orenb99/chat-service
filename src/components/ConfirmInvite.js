@@ -22,7 +22,6 @@ function ConfirmInvite({ user }) {
         errorMessage.current.innerText = "Invalid Link";
         setValid(false);
       } else if (chatInfo[0].users.includes(user.email)) {
-        console.log("yes");
         errorMessage.current.innerText = "User already in this chat";
         setValid(false);
       }
@@ -34,7 +33,6 @@ function ConfirmInvite({ user }) {
       errorMessage.current.innerText = "Incorrect password";
       return;
     }
-    console.log(chatInfo[0]);
     let updatedChats = await usersRef.where("email", "==", user.email).get();
     updatedChats = updatedChats.docs[0].data().chats;
     updatedChats.push(chatInfo[0].chatId);
@@ -48,7 +46,6 @@ function ConfirmInvite({ user }) {
     chatsRef
       .doc(chatInfo[0].chatId)
       .set({ users: updatedUsers }, { merge: true });
-    console.log(updatedUsers, updatedChats);
     history.push("/chat");
   };
   return (

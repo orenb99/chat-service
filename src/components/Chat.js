@@ -41,7 +41,6 @@ function Chat({ user, chatId }) {
   };
 
   const sendMessage = async (e) => {
-    console.log(e.target);
     e.preventDefault();
     if (!textInput) return;
     const message = {
