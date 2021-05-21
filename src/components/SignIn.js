@@ -12,7 +12,7 @@ function SignIn() {
     firebase
       .auth()
       .signInWithEmailAndPassword(emailInput, passwordInput)
-      .then((user) => {
+      .then(() => {
         history.push("/profile");
       })
       .catch((err) => {

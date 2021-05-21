@@ -43,7 +43,12 @@
 }
 
 .confirm-page {
+  background-color: #8bdae7;
   text-align: center;
+  position: fixed;
+  left: 35vw;
+  width: 65vw;
+  height: 100vh;
 }
 
 .message-div {

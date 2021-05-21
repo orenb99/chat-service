@@ -6,12 +6,18 @@ function ChatRoom({ user, setCurrentChat }) {
   const db = firebase.firestore();
   const usersRef = db.collection("Users");
   const chatsRef = db.collection("Chats");
+  const [valid, setValid] = useState(false);
   const [userInfo, loadingInfo] = useCollectionData(
     usersRef.where("email", "==", user.email)
   );
   useEffect(() => {
-    if (userInfo) if (userInfo[0].chats) setCurrentChat(userInfo[0].chats[0]);
-  }, [userInfo]);
+    if (!loadingInfo)
+      if (userInfo.length > 0)
+        if (userInfo[0].chats) {
+          setCurrentChat(userInfo[0].chats[0]);
+          setValid(true);
+        }
+  }, [loadingInfo, userInfo]);
   const createChat = () => {
     let chatId = "chatroom" + new Date().getTime();
     chatsRef
@@ -38,7 +44,7 @@ function ChatRoom({ user, setCurrentChat }) {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="chat-room" hidden={useLocation().pathname.length > 20}>
+    <div className="chat-room">
       <h1 className="headline">Chat Rooms</h1>
       <NavLink className="profile-link" to="/profile">
         <h3>Go to profile</h3>
@@ -47,10 +53,10 @@ function ChatRoom({ user, setCurrentChat }) {
       <button onClick={createChat}>Create new chat room</button>
       <br />
       <div className="rooms">
-        {!loadingInfo && userInfo[0].chats ? (
+        {valid &&
           userInfo[0].chats.map((value, index) => (
             <NavLink
-              to="chat"
+              to="/chat"
               className="room-title"
               key={index}
               onClick={() => {
@@ -59,10 +65,7 @@ function ChatRoom({ user, setCurrentChat }) {
             >
               <h2>{value}</h2>
             </NavLink>
-          ))
-        ) : (
-          <h3>No chats available</h3>
-        )}
+          ))}
       </div>
     </div>
   );
